@@ -1,18 +1,21 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycby8987k-m413NFTKh8hXvV58yv_b5nOXEc81c1jzxAFa_sqXzsoUM6MQB0dKOOqnral/exec'
-        const form = document.forms['google-sheet']
 
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => alert("You have successfully submitted."))
-            .catch(error => console.error('Error!', error.message))
-        })
-/*$(function() {
+$(function() {
 
   $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
+
     preventSubmit: true,
     submitError: function($form, event, errors) {
       // additional error messages or events
+
+      const scriptURL = 'https://script.google.com/macros/s/AKfycby8987k-m413NFTKh8hXvV58yv_b5nOXEc81c1jzxAFa_sqXzsoUM6MQB0dKOOqnral/exec'
+              const form = document.forms['google-sheet']
+              form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                  .then(response => alert("You have successfully submitted."))
+
+                  .catch(error => console.error('Error!', error.message))
+              })
     },
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
@@ -40,6 +43,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycby8987k-m413NFTKh8hXv
         cache: false,
         success: function() {
           // Success message
+
           $('#success').html("<div class='alert alert-success'>");
           $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
@@ -52,6 +56,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycby8987k-m413NFTKh8hXv
         },
         error: function() {
           // Fail message
+
           $('#success').html("<div class='alert alert-danger'>");
           $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
@@ -70,6 +75,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycby8987k-m413NFTKh8hXv
     filter: function() {
       return $(this).is(":visible");
     },
+
   });
 
   $("a[data-toggle=\"tab\"]").click(function(e) {
@@ -79,6 +85,6 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycby8987k-m413NFTKh8hXv
 });
 
 /*When clicking on Full hide fail/success boxes */
-/*$('#name').focus(function() {
+$('#name').focus(function() {
   $('#success').html('');
-});*/
+})
